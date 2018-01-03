@@ -1,6 +1,6 @@
 <div class="container">
   <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-    <div class="content">
+    <div *ngIf="checkLogin" class="content">
       <h2>Вход в систему</h2>
       <div class="panel panel-info">
         <div class="panel-heading">
@@ -37,6 +37,13 @@
           </form>
         </div>
       </div>
+    </div>
+    <div>{{checkLogin}}</div>
+    <div *ngIf="!authenticationError && !checkLogin">
+      <span>Вы вошли под пользователем {{username}}</span>
+    </div>
+    <div *ngIf="authenticationError">
+      <span>Вы ввели неверный логин/пароль. Попробуйте ещё раз.</span>
     </div>
   </div>
 </div>

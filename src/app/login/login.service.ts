@@ -1,30 +1,36 @@
 import {Injectable} from '@angular/core';
 import {AuthServerProvider} from '../auth/auth-jwt.service';
 import {Principal} from '../auth/principal.service';
+import {Observable} from 'rxjs/Observable';
+import {SERVER_API_URL} from '../app.constants';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class LoginService {
 
   constructor(
     private principal: Principal,
-    private authServerProvider: AuthServerProvider
+    private authServerProvider: AuthServerProvider,
+    private http: HttpClient
   ) {}
 
-  login(credentials, callback?) {
-    const cb = callback || function() {};
-
+  login(credentials) {
     return new Promise((resolve, reject) => {
       this.authServerProvider.login(credentials).subscribe((data) => {
-        this.principal.identity(true).then((account) => {
-          resolve(data);
-        });
-        return cb();
       }, (err) => {
         this.logout();
         reject(err);
-        return cb(err);
       });
     });
+  }
+
+  login2(credentials): Observable<any> {
+    const data = {
+      username: credentials.username,
+      password: credentials.password,
+      rememberMe: credentials.rememberMe
+    };
+    return this.http.post(SERVER_API_URL + 'api/authenticate', data);
   }
 
   loginWithToken(jwt, rememberMe) {

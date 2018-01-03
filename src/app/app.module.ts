@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 import {Principal} from './auth/principal.service';
 import {AuthServerProvider} from './auth/auth-jwt.service';
 import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {HttpModule} from '@angular/http';
     BrowserModule,
     Ng2Webstorage,
     FormsModule,
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
   providers: [Principal, AuthServerProvider],
   bootstrap: [AppComponent]

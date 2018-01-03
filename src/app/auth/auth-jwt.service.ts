@@ -27,12 +27,10 @@ export class AuthServerProvider {
 
     function authenticateSuccess(resp) {
       const bearerToken = resp.headers.get('Authorization');
-      if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {
-        const jwt = bearerToken.slice(7, bearerToken.length);
+        const jwt = resp._body.substring(13, resp._body.length - 2);
         this.storeAuthenticationToken(jwt, credentials.rememberMe);
         return jwt;
       }
-    }
   }
 
   loginWithToken(jwt, rememberMe) {
