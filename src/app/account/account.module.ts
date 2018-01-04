@@ -5,6 +5,7 @@ import {Register} from './register/register.service';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {LoginComponent} from './login/login.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import {FormsModule} from '@angular/forms';
   ],
   declarations: [
     RegisterComponent,
+    LoginComponent
   ],
   providers: [
     Register

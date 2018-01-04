@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import {LoginService} from '../../login/login.service';
+import {LoginService} from '../../account/login/login.service';
 import {Principal} from '../../auth/principal.service';
 import {Router} from '@angular/router';
 

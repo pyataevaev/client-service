@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import {Ng2Webstorage} from 'ngx-webstorage';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
 import {FormsModule} from '@angular/forms';
 import {Principal} from './auth/principal.service';
 import {AuthServerProvider} from './auth/auth-jwt.service';
@@ -24,7 +23,6 @@ import {AccountModule} from './account/account.module';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     MainComponent,
     NavbarComponent,
     ErrorComponent,
