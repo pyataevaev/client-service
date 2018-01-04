@@ -14,12 +14,16 @@ export class LoginComponent implements OnInit {
   username: string;
   credentials: any;
   checkLogin: boolean;
+  success: boolean;
 
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
     // reset login status
     this.checkLogin = true;
+    this.success = false;
+    this.username = '';
+    this.password = '';
   }
 
   login() {
@@ -32,8 +36,10 @@ export class LoginComponent implements OnInit {
         this.checkLogin = false;
         this.authenticationError = false;
         console.log('login success');
+        this.success = true;
       },
       error => {
+        this.success = false;
         this.authenticationError = true;
       });
 
